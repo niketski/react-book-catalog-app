@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/header/Header';
+import SearchBook from './components/searchBook/SearchBook';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header/>
         <main>
-          
+          <SearchBook/>
         </main>
       </React.Fragment>
     );

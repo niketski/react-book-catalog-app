@@ -1,8 +1,10 @@
+import styles from './Header.module.css';
+
 import HeaderLogo from "./HeaderLogo";
 
 function Header() {
     return (
-        <header>
+        <header className={styles.mainHeader}>
             <HeaderLogo/>
         </header>
     );

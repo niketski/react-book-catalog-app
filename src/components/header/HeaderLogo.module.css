@@ -1,4 +1,7 @@
 .HeaderLogo {
     display: inline-block;
-    font-size: 30px;
+}
+
+.HeaderLogo h1 {
+    font-size: 35px;
 }

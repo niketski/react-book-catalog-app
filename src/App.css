@@ -16,3 +16,9 @@ body {
     color: #fff;
     background-color: var(--background-color);
 }
+
+main {
+    max-width: 1170px;
+    padding: 0 15px;
+    margin: 60px auto 0;
+}

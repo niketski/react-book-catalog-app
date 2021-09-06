@@ -1,8 +1,10 @@
 import './App.css';
 
+import Header from './components/header/Header';
+
 function App() {
   return (
-    <h1>Book Catalog App</h1>
+    <Header/>
   );
 }
 

@@ -1,0 +1,12 @@
+.booksPanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+    .searchBookHolder {
+        display: block;
+        width: 100%;
+        max-width: 706px;
+    }

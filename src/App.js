@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/header/Header';
-import SearchBook from './components/searchBook/SearchBook';
 import BooksTable from './components/booksTable/BooksTable';
+import BooksPanel from './components/BooksPanel/BooksPanel';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header/>
         <main>
-          <SearchBook/>
+          <BooksPanel/>
           <BooksTable/>
         </main>
       </React.Fragment>

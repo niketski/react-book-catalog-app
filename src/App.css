@@ -3,7 +3,9 @@
     --secondary-color: #1dd1a1;
     --background-color: #222f3e;
     --color-danger: #ff6b6b;
+    --color-danger-secondary: #a54c4c;
     --color-primary: #2e86de;
+    --color-primary-secondary: #2365a7;
     --site-transition: all .4s ease;
 }
 
@@ -42,6 +44,44 @@ main {
 
 .btnPrimary:hover {
     background-color: var(--secondary-color);
+}
+
+.btnDanger {
+    appearance: none;
+    outline: none;
+    background: var(--color-danger);
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    transition: var(--site-transition);
+}
+
+.btnDanger:hover {
+    background-color: var(--color-danger-secondary);
+}
+
+.btnSecondary {
+    appearance: none;
+    outline: none;
+    background: var(--color-primary);
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    transition: var(--site-transition);
+}
+
+.btnSecondary:hover {
+    background-color: var(--color-primary-secondary);
 }
 
 .inputField label {

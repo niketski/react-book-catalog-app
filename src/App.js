@@ -3,6 +3,7 @@ import './App.css';
 
 import Header from './components/header/Header';
 import SearchBook from './components/searchBook/SearchBook';
+import BooksTable from './components/booksTable/BooksTable';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Header/>
         <main>
           <SearchBook/>
+          <BooksTable/>
         </main>
       </React.Fragment>
     );

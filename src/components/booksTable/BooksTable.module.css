@@ -1,0 +1,51 @@
+.booksTable {
+    display: block;
+}
+
+    .booksTable table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .booksTable thead {
+            height: 78px;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+            .booksTable thead th {
+                text-align: left;
+                font-size: 20px;
+                padding: 10px;
+            }
+
+        .booksTableControl {
+            text-align: right;
+        }
+
+            .booksTableControl button {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 11px;
+                height: 42px;
+                padding: 7px 24px;
+            }
+
+            .booksTableControl button:last-child {
+                margin-right: 0;
+            }
+
+        .booksTable tbody tr {
+            transition: var(--site-transition);
+        }
+
+        .booksTable tbody tr:hover {
+            background-color: var(--primary-color) !important;
+        }
+
+        .booksTable tbody tr:nth-child(even) {
+            background: #1a242f;
+        }
+
+            .booksTable td {
+                padding: 10px;
+            }

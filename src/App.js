@@ -3,7 +3,8 @@ import './App.css';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
-import BooksPanel from './components/BooksPanel/BooksPanel';
+import BooksPanel from './components/booksPanel/BooksPanel';
+import Modal from './components/ui/Modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header/>
+
+        {/* modals */}
+        <Modal>Add Book Modal</Modal>
+
         <main>
           <BooksPanel/>
           <BooksTable/>

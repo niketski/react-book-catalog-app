@@ -1,0 +1,44 @@
+.modalBackdrop,
+.modalBody {
+    position: fixed;
+}
+
+.modalBackdrop {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .40;
+    z-index: 99;
+}
+
+.modalBody {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 100%;
+    max-width: 500px;
+    background: var(--primary-color);
+}
+
+    .modalClose {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: inline-block;
+        padding: 15px;
+        color: #fff;
+        font-size: 16px;
+        background-color: var(--color-danger);
+        transition: var(--site-transition);
+    }
+    
+    .modalClose:hover {
+        background-color: var(--color-danger-secondary);
+    }
+
+    .modalInner {
+        padding: 30px 15px;
+    }

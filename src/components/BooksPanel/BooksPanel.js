@@ -1,13 +1,13 @@
 import styles from './BooksPanel.module.css';
 import SearchBook from '../searchBook/SearchBook';
 
-function BooksPanel() {
+function BooksPanel(props) {
     return (
         <div className={styles.booksPanel}>
             <div className={styles.searchBookHolder}>
                 <SearchBook/>
             </div>
-            <button type="button" className="btnSecondary">Add Book</button>
+            <button type="button" className="btnSecondary" onClick={props.addBookModalShowHandler}>Add Book</button>
         </div>
     );
 }

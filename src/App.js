@@ -4,25 +4,39 @@ import './App.css';
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
 import BooksPanel from './components/booksPanel/BooksPanel';
-import Modal from './components/ui/Modal';
+
+import AddBookModal from './components/addBookModal/AddBookModal';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      addBookModalIsActive: false
+    };
+    this.showAddBookModal = this.showAddBookModal.bind(this);
+    this.hideAddBookModal = this.hideAddBookModal.bind(this)
+  }
+
+  showAddBookModal() {
+    this.setState({ addBookModalIsActive: true });
+  }
+
+  hideAddBookModal() {
+    this.setState({ addBookModalIsActive: false });
   }
 
   render() {
+    const { addBookModalIsActive } = this.state;
     return (
       <React.Fragment>
         <Header/>
 
         {/* modals */}
-        <Modal title="Add Book">
-          <p>Hello world</p>
-        </Modal>
+
+        { addBookModalIsActive ?  <AddBookModal onClose={this.hideAddBookModal} /> : null}
 
         <main>
-          <BooksPanel/>
+          <BooksPanel addBookModalShowHandler={this.showAddBookModal} />
           <BooksTable/>
         </main>
       </React.Fragment>

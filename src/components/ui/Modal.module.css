@@ -19,26 +19,47 @@
     transform: translate(-50%, -50%);
     z-index: 100;
     width: 100%;
+    border-radius: 5px;
     max-width: 500px;
-    background: var(--primary-color);
+    padding-top: 65px;
+    background: var(--background-color);
+    border-top: 5px solid var(--primary-color);
 }
 
     .modalClose {
         position: absolute;
         top: 20px;
         right: 20px;
-        display: inline-block;
-        padding: 15px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 30px;
+        height: 30px;
         color: #fff;
-        font-size: 16px;
+        font-size: 21px;
         background-color: var(--color-danger);
         transition: var(--site-transition);
+        -webkit-appearance: none;
+        appearance: none;
+        border: none;
+        line-height: 1;
+        cursor: pointer;
+        outline: none;
+        border-radius: 5px;
     }
     
     .modalClose:hover {
         background-color: var(--color-danger-secondary);
     }
 
+    h3 {
+        font-size: 23px;
+        text-align: center;
+        color: #fff;
+    }
+
     .modalInner {
         padding: 30px 15px;
     }
+    

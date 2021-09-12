@@ -17,7 +17,9 @@ class App extends React.Component {
         <Header/>
 
         {/* modals */}
-        <Modal>Add Book Modal</Modal>
+        <Modal title="Add Book">
+          <p>Hello world</p>
+        </Modal>
 
         <main>
           <BooksPanel/>

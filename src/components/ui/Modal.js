@@ -14,6 +14,7 @@ function ModalContent(props) {
     return (
         <div className={styles.modalBody}>
             <button type="button" className={styles.modalClose}>x</button>
+            {props.title ? <h3>{props.title}</h3> : null}
             <div className={styles.modalInner}>{props.children}</div>
         </div>
     );
@@ -23,7 +24,7 @@ function Modal(props) {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(<ModalBackDrop onClose={props.onClose} />, portalElement)}
-            {ReactDOM.createPortal(<ModalContent>{props.children}</ModalContent>, portalElement)}
+            {ReactDOM.createPortal(<ModalContent title={props.title}>{props.children}</ModalContent>, portalElement)}
         </React.Fragment>
     );
 }

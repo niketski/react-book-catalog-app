@@ -4,7 +4,6 @@ import './App.css';
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
 import BooksPanel from './components/booksPanel/BooksPanel';
-
 import AddBookModal from './components/addBookModal/AddBookModal';
 
 class App extends React.Component {

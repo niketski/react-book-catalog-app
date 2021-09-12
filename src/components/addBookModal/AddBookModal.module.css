@@ -1,0 +1,12 @@
+.addBookForm {
+
+}
+
+    .addBookForm .inputField {
+        margin-bottom: 15px;
+    }
+
+        .btnPrimary {
+            display: block;
+            margin: 30px auto 0;
+        }

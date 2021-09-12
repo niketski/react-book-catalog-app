@@ -107,6 +107,24 @@ main {
     width: 100%;
 }
 
+.inputField.invalid input {
+    border: 1px solid var(--color-danger);
+}
+
 .inputField input::placeholder {
     color: #fff;
+}
+
+.vaildationMessage {
+    color: var(--color-danger);
+    padding: 5px 0;
+    display: none;
+}
+
+.inputField.invalid .vaildationMessage {
+    display: block;
+}
+
+form button[disabled] {
+    opacity: .50;
 }

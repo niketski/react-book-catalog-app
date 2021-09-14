@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { books } from './initial-books-data.json';
+import { v4 as uuidV4 } from 'uuid';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
@@ -29,7 +30,19 @@ class App extends React.Component {
 
   addBookSubmit(book) {
 
-    console.log(book);
+    let updatedBooks = [...this.state.books];
+    let newBook = {
+      ...book,
+      id: uuidV4()
+    };
+
+    updatedBooks.push(newBook);
+
+    this.setState({
+      books: updatedBooks
+    });
+
+
     console.log('submtted');
 
   }
@@ -37,6 +50,7 @@ class App extends React.Component {
   // lifecycle methods
   componentDidMount() {
     console.log('mounted');
+
     this.setState({
       books: books
     });

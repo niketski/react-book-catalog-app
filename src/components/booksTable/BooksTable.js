@@ -1,10 +1,11 @@
 import styles from './BooksTable.module.css';
-import books from '../../initial-books-data.json'
 
 function BooksTable(props) {
+   
+    console.log(props.books);
 
     return (
-
+        
         <div className={styles.booksTable}>
             <table>
                 <thead>
@@ -19,54 +20,26 @@ function BooksTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Harry Potter</td>
-                        <td>12345</td>
-                        <td>nicolet</td>
-                        <td>nicolet</td>
-                        <td>2021</td>
-                        <td>horror</td>
-                        <td className={styles.booksTableControl}>
-                            <button type="button" className="btnSecondary booksEdit">Edit</button>
-                            <button type="button" className="btnDanger booksDelete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Harry Potter</td>
-                        <td>12345</td>
-                        <td>nicolet</td>
-                        <td>nicolet</td>
-                        <td>2021</td>
-                        <td>horror</td>
-                        <td className={styles.booksTableControl}>
-                            <button type="button" className="btnSecondary booksEdit">Edit</button>
-                            <button type="button" className="btnDanger booksDelete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Harry Potter</td>
-                        <td>12345</td>
-                        <td>nicolet</td>
-                        <td>nicolet</td>
-                        <td>2021</td>
-                        <td>horror</td>
-                        <td className={styles.booksTableControl}>
-                            <button type="button" className="btnSecondary booksEdit">Edit</button>
-                            <button type="button" className="btnDanger booksDelete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Harry Potter</td>
-                        <td>12345</td>
-                        <td>nicolet</td>
-                        <td>nicolet</td>
-                        <td>2021</td>
-                        <td>horror</td>
-                        <td className={styles.booksTableControl}>
-                            <button type="button" className="btnSecondary booksEdit">Edit</button>
-                            <button type="button" className="btnDanger booksDelete">Delete</button>
-                        </td>
-                    </tr>
+                    {
+                        props.books.map(book => {
+                            const {id, title, isbn, author, publisher, year_published, category} = book;
+
+                            return (
+                                <tr data-book-id={id} key={id}>
+                                    <td>{title}</td>
+                                    <td>{isbn}</td>
+                                    <td>{author}</td>
+                                    <td>{publisher}</td>
+                                    <td>{year_published}</td>
+                                    <td>{category}</td>
+                                    <td className={styles.booksTableControl}>
+                                        <button type="button" className="btnSecondary booksEdit">Edit</button>
+                                        <button type="button" className="btnDanger booksDelete">Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </table>
         </div>

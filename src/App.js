@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { books } from './initial-books-data.json';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
@@ -10,7 +11,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addBookModalIsActive: false
+      addBookModalIsActive: false,
+      books: []
     };
     this.showAddBookModal = this.showAddBookModal.bind(this);
     this.hideAddBookModal = this.hideAddBookModal.bind(this);
@@ -32,8 +34,20 @@ class App extends React.Component {
 
   }
 
+  // lifecycle methods
+  componentDidMount() {
+    console.log('mounted');
+    this.setState({
+      books: books
+    });
+
+    console.log(books);
+
+  }
+
   render() {
-    const { addBookModalIsActive } = this.state;
+    const { addBookModalIsActive, books } = this.state;
+
     return (
       <React.Fragment>
         <Header/>
@@ -44,7 +58,7 @@ class App extends React.Component {
 
         <main>
           <BooksPanel addBookModalShowHandler={this.showAddBookModal} />
-          <BooksTable/>
+          <BooksTable books={books}/>
         </main>
       </React.Fragment>
     );

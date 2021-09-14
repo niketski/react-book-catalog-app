@@ -66,6 +66,8 @@ function AddBookModal(props) {
         errorMessage: categoryErrorMessage
     } = useInput('Category');
 
+
+    // checks if all the fields are valid
     if(titleIsvalid && isbnIsvalid && authorIsvalid && publisherIsvalid && yearPublishedIsvalid && categoryIsvalid) {
         formIsValid = true;
     }
@@ -85,7 +87,7 @@ function AddBookModal(props) {
             category: categoryValue
         });
         
-        //reset field
+        //reset fields
         titleResetHandler();
         isbnResetHandler();
         authorResetHandler();
@@ -98,6 +100,7 @@ function AddBookModal(props) {
         <Modal title="Add Book" onClose={props.onClose}>
             <div className={styles.addBookForm}>
                 <form onSubmit={formSubmitHandler}>
+
                     <div className={`inputField ${titleHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-title">ISBN</label>
                         <input 
@@ -109,6 +112,7 @@ function AddBookModal(props) {
                             value={titleValue}/>
                         <div className="vaildationMessage">{titleErrorMessage}</div>
                     </div>
+
                     <div className={`inputField ${isbnHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-isbn">ISBN</label>
                         <input 
@@ -120,6 +124,7 @@ function AddBookModal(props) {
                             value={isbnValue}/>
                         <div className="vaildationMessage">{isbnErrorMessage}</div>
                     </div>
+
                     <div className={`inputField ${authorHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-author">Author</label>
                         <input 
@@ -131,6 +136,7 @@ function AddBookModal(props) {
                             value={authorValue}/>
                         <div className="vaildationMessage">{authorErrorMessage}</div>
                     </div>
+
                     <div className={`inputField ${publisherHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-publisher">Publisher</label>
                         <input 
@@ -142,6 +148,7 @@ function AddBookModal(props) {
                             value={publisherValue}/>
                         <div className="vaildationMessage">{publisherErrorMessage}</div>
                     </div>
+
                     <div className={`inputField ${yearPublishedHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-year-published">Year Published</label>
                         <input 
@@ -153,6 +160,7 @@ function AddBookModal(props) {
                             value={yearPublishedValue}/>
                         <div className="vaildationMessage">{yearPublishedErrorMessage}</div>
                     </div>
+
                     <div className={`inputField ${categoryHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-category">Category</label>
                         <input 
@@ -164,6 +172,7 @@ function AddBookModal(props) {
                             value={categoryValue}/>
                         <div className="vaildationMessage">{categoryErrorMessage}</div>
                     </div>
+
                     <button type="submit" className={`btnPrimary ${styles.btnPrimary}`} disabled={formIsValid ? false : true}>Submit</button>
                 </form>
             </div>

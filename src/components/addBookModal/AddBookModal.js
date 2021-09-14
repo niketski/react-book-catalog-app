@@ -9,8 +9,9 @@ function AddBookModal(props) {
         hasError: titleHasError,
         inputChangehandler: titleChangeHandler,
         inputBlurHandler: titleBlurHandler,
-        inputResetHandler: titleResetHandler
-     } = useInput(value => value.trim().length !== 0);
+        inputResetHandler: titleResetHandler,
+        errorMessage: titleErrorMessage
+     } = useInput('Title');
 
      const { 
         value: isbnValue,
@@ -18,8 +19,9 @@ function AddBookModal(props) {
         hasError: isbnHasError,
         inputChangehandler: isbnChangeHandler,
         inputBlurHandler: isbnBlurHandler,
-        inputResetHandler: isbnResetHandler
-     } = useInput(value => value.trim().length !== 0);
+        inputResetHandler: isbnResetHandler,
+        errorMessage: isbnErrorMessage
+     } = useInput('ISBN', 'isbn');
 
     
 
@@ -36,7 +38,7 @@ function AddBookModal(props) {
                             onChange={titleChangeHandler} 
                             onBlur={titleBlurHandler} 
                             value={titleValue}/>
-                        <div className="vaildationMessage">Please fill out this field.</div>
+                        <div className="vaildationMessage">{titleErrorMessage}</div>
                     </div>
                     <div className={`inputField ${isbnHasError ? 'invalid' : ''} ${styles.inputField}`}>
                         <label htmlFor="book-isbn">ISBN</label>
@@ -47,7 +49,7 @@ function AddBookModal(props) {
                             onChange={isbnChangeHandler} 
                             onBlur={isbnBlurHandler} 
                             value={isbnValue}/>
-                        <div className="vaildationMessage">Please fill out this field.</div>
+                        <div className="vaildationMessage">{isbnErrorMessage}</div>
                     </div>
                     <div className={`inputField ${styles.inputField}`}>
                         <label htmlFor="book-author">Author</label>

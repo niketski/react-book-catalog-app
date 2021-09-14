@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import inputValidate from "../utils/inputValidate";
 
 const initialState = {
     value: '',
@@ -24,10 +25,12 @@ function reducer(state, action) {
 
 }
 
-const useInput = function(validate) {
+const useInput = function(fieldName, type) {
     const [inputState, dispatch] = useReducer(reducer, initialState);
-    const isValid                = validate(inputState.value);
+    const {isValid, errorMessage}     = inputValidate(inputState.value, fieldName, type);
     const hasError               = !isValid && inputState.isTouched;
+
+    console.log(isValid, errorMessage);
 
     const inputChangehandler = function (event) {
         dispatch({type: 'change', value: event.target.value });
@@ -48,7 +51,8 @@ const useInput = function(validate) {
         hasError,
         inputChangehandler,
         inputBlurHandler,
-        inputResetHandler
+        inputResetHandler,
+        errorMessage
     };
 
 };

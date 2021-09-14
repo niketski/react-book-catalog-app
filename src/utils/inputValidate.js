@@ -11,7 +11,7 @@ function inputValidate(value, fieldName, type = 'default') {
 
         return {
             isValid: false,
-            message: messages.default
+            errorMessage: messages.default
         };
 
     } else if(type == 'isbn') {
@@ -23,7 +23,7 @@ function inputValidate(value, fieldName, type = 'default') {
 
             return {
                 isValid: false,
-                message: messages.isbn
+                errorMessage: messages.isbn
             }
 
         }
@@ -36,26 +36,26 @@ function inputValidate(value, fieldName, type = 'default') {
 
             return {
                 isValid: false,
-                message: messages.email
+                errorMessage: messages.email
             }
 
         }
 
     } else if (type == 'year') {
 
-        const regExp  = new RegExp(/([\d]){4}+/);
+        const regExp  = new RegExp(/([\d])+/);
         
         if(!regExp.test(value)) {
 
             return {
                 isValid: false,
-                message: messages.year
+                errorMessage: messages.year
             }
 
         }
     }
 
-    return { isValid: true , message: ''};
+    return { isValid: true , errorMessage: ''};
 
 }
 

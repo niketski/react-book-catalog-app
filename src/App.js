@@ -13,7 +13,8 @@ class App extends React.Component {
       addBookModalIsActive: false
     };
     this.showAddBookModal = this.showAddBookModal.bind(this);
-    this.hideAddBookModal = this.hideAddBookModal.bind(this)
+    this.hideAddBookModal = this.hideAddBookModal.bind(this);
+    this.addBookSubmit    = this.addBookSubmit.bind(this);
   }
 
   showAddBookModal() {
@@ -24,6 +25,13 @@ class App extends React.Component {
     this.setState({ addBookModalIsActive: false });
   }
 
+  addBookSubmit(book) {
+
+    console.log(book);
+    console.log('submtted');
+
+  }
+
   render() {
     const { addBookModalIsActive } = this.state;
     return (
@@ -32,7 +40,7 @@ class App extends React.Component {
 
         {/* modals */}
 
-        { addBookModalIsActive ?  <AddBookModal onClose={this.hideAddBookModal} /> : null}
+        { addBookModalIsActive ?  <AddBookModal onSubmit={this.addBookSubmit} onClose={this.hideAddBookModal} /> : null}
 
         <main>
           <BooksPanel addBookModalShowHandler={this.showAddBookModal} />

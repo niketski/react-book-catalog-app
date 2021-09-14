@@ -4,7 +4,7 @@ function inputValidate(value, fieldName, type = 'default') {
         default: `${fieldName} is required`,
         email: 'Email is invalid.',
         isbn: 'Value must be equal to 5 digits',
-        year: 'Invalid Year',
+        year: 'Year must be follow this format (YYYY)',
     };
 
     if(value.trim().length == 0) {
@@ -43,7 +43,7 @@ function inputValidate(value, fieldName, type = 'default') {
 
     } else if (type == 'year') {
 
-        const regExp  = new RegExp(/([\d])+/);
+        const regExp  = new RegExp(/[\d]{4}/);
         
         if(!regExp.test(value)) {
 

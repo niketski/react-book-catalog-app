@@ -1,0 +1,22 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "Harry Potter",
+            "isbn": 12345,
+            "author": "J. K. Rowling",
+            "publisher": "Bloomsbury Publishing",
+            "year_published": 2001,
+            "category": "fantasy"
+        },
+        {
+            "id": 2,
+            "title": "Spider Man",
+            "isbn": 12345,
+            "author": "Stan Lee",
+            "publisher": "Marvel",
+            "year_published": 1962,
+            "category": "fiction"
+        }
+    ]
+}

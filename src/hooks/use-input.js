@@ -26,11 +26,9 @@ function reducer(state, action) {
 }
 
 const useInput = function(fieldName, type) {
-    const [inputState, dispatch] = useReducer(reducer, initialState);
+    const [inputState, dispatch]      = useReducer(reducer, initialState);
     const {isValid, errorMessage}     = inputValidate(inputState.value, fieldName, type);
-    const hasError               = !isValid && inputState.isTouched;
-
-    console.log(isValid, errorMessage);
+    const hasError                    = !isValid && inputState.isTouched;
 
     const inputChangehandler = function (event) {
         dispatch({type: 'change', value: event.target.value });

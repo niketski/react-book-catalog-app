@@ -1,4 +1,5 @@
 import styles from './BooksTable.module.css';
+import books from '../../initial-books-data.json'
 
 function BooksTable(props) {
 

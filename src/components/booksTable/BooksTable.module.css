@@ -38,6 +38,10 @@
             transition: var(--site-transition);
         }
 
+        .booksTableMessage {
+            text-align: center;
+        }
+
         .booksTable tbody tr:hover {
             background-color: var(--primary-color) !important;
         }
@@ -49,3 +53,4 @@
             .booksTable td {
                 padding: 10px;
             }
+            

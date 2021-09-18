@@ -2,7 +2,35 @@ import styles from './BooksTable.module.css';
 
 function BooksTable(props) {
    
-    console.log(props.books);
+    let tableContent;
+
+    if(!props.books.length) {
+
+        tableContent = <tr className={styles.booksTableMessage}><td colspan="7">Books not available ...</td></tr>
+
+    } else {
+
+        tableContent = props.books.map(book => {
+            const {id, title, isbn, author, publisher, year_published, category} = book;
+
+            return (
+                <tr data-book-id={id} key={id}>
+                    <td>{title}</td>
+                    <td>{isbn}</td>
+                    <td>{author}</td>
+                    <td>{publisher}</td>
+                    <td>{year_published}</td>
+                    <td>{category}</td>
+                    <td className={styles.booksTableControl}>
+                        <button type="button" className="btnSecondary booksEdit">Edit</button>
+                        <button type="button" className="btnDanger booksDelete" onClick={() => { props.deleteBook(id) }}>Delete</button>
+                    </td>
+                </tr>
+            )
+        });
+
+    }
+    
 
     return (
         
@@ -20,26 +48,7 @@ function BooksTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        props.books.map(book => {
-                            const {id, title, isbn, author, publisher, year_published, category} = book;
-
-                            return (
-                                <tr data-book-id={id} key={id}>
-                                    <td>{title}</td>
-                                    <td>{isbn}</td>
-                                    <td>{author}</td>
-                                    <td>{publisher}</td>
-                                    <td>{year_published}</td>
-                                    <td>{category}</td>
-                                    <td className={styles.booksTableControl}>
-                                        <button type="button" className="btnSecondary booksEdit">Edit</button>
-                                        <button type="button" className="btnDanger booksDelete" onClick={() => { props.deleteBook(id) }}>Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
+                    {tableContent}
                 </tbody>
             </table>
         </div>

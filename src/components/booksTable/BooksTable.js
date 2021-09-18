@@ -34,7 +34,7 @@ function BooksTable(props) {
                                     <td>{category}</td>
                                     <td className={styles.booksTableControl}>
                                         <button type="button" className="btnSecondary booksEdit">Edit</button>
-                                        <button type="button" className="btnDanger booksDelete">Delete</button>
+                                        <button type="button" className="btnDanger booksDelete" onClick={() => { props.deleteBook(id) }}>Delete</button>
                                     </td>
                                 </tr>
                             )

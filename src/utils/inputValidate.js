@@ -16,9 +16,9 @@ function inputValidate(value, fieldName, type = 'default') {
 
     } else if(type == 'isbn') {
 
-        const regExp = new RegExp(/[\d]{5}/);
+        const regExp = new RegExp(/^[\d]{5}?$/);
         const test   =  regExp.test(value); // tests if the value is equal to 5 digits
-
+     
         if(!test) {
 
             return {
@@ -43,7 +43,7 @@ function inputValidate(value, fieldName, type = 'default') {
 
     } else if (type == 'year') {
 
-        const regExp  = new RegExp(/[\d]{4}/);
+        const regExp  = new RegExp(/^[\d]{4}?$/);
         
         if(!regExp.test(value)) {
 

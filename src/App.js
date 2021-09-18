@@ -15,9 +15,10 @@ class App extends React.Component {
       addBookModalIsActive: false,
       books: []
     };
-    this.showAddBookModal = this.showAddBookModal.bind(this);
-    this.hideAddBookModal = this.hideAddBookModal.bind(this);
-    this.addBookSubmit    = this.addBookSubmit.bind(this);
+    this.showAddBookModal  = this.showAddBookModal.bind(this);
+    this.hideAddBookModal  = this.hideAddBookModal.bind(this);
+    this.addBookHandler    = this.addBookHandler.bind(this);
+    this.deleteBookHandler = this.deleteBookHandler.bind(this);
   }
 
   showAddBookModal() {
@@ -28,7 +29,7 @@ class App extends React.Component {
     this.setState({ addBookModalIsActive: false });
   }
 
-  addBookSubmit(book) {
+  addBookHandler(book) {
 
     let updatedBooks = [...this.state.books];
     let newBook = {
@@ -45,6 +46,18 @@ class App extends React.Component {
 
     console.log('submtted');
 
+  }
+
+  deleteBookHandler(id) {
+    
+    const updatedBooks = [...this.state.books].filter(book => book.id != id);
+ 
+    this.setState({
+      books:  updatedBooks
+    });
+
+  
+    console.log('delete');
   }
 
   // lifecycle methods
@@ -68,11 +81,11 @@ class App extends React.Component {
 
         {/* modals */}
 
-        { addBookModalIsActive ?  <AddBookModal onSubmit={this.addBookSubmit} onClose={this.hideAddBookModal} /> : null}
+        { addBookModalIsActive ?  <AddBookModal onSubmit={this.addBookHandler} onClose={this.hideAddBookModal} /> : null}
 
         <main>
           <BooksPanel addBookModalShowHandler={this.showAddBookModal} />
-          <BooksTable books={books}/>
+          <BooksTable deleteBook={this.deleteBookHandler} books={books}/>
         </main>
       </React.Fragment>
     );

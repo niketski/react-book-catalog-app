@@ -14,7 +14,7 @@ function AddBookModal(props) {
         inputBlurHandler: titleBlurHandler,
         inputResetHandler: titleResetHandler,
         errorMessage: titleErrorMessage
-    } = useInput('Title');
+    } = useInput('');
 
     const { 
         value: isbnValue,
@@ -24,7 +24,7 @@ function AddBookModal(props) {
         inputBlurHandler: isbnBlurHandler,
         inputResetHandler: isbnResetHandler,
         errorMessage: isbnErrorMessage
-    } = useInput('ISBN', 'isbn');
+    } = useInput('', 'isbn');
 
     const { 
         value: authorValue,
@@ -34,7 +34,7 @@ function AddBookModal(props) {
         inputBlurHandler: authorBlurHandler,
         inputResetHandler: authorResetHandler,
         errorMessage: authorErrorMessage
-    } = useInput('Author');
+    } = useInput('');
 
     const { 
         value: publisherValue,
@@ -44,7 +44,7 @@ function AddBookModal(props) {
         inputBlurHandler: publisherBlurHandler,
         inputResetHandler: publisherResetHandler,
         errorMessage: publisherErrorMessage
-    } = useInput('Publisher');
+    } = useInput('');
 
     const { 
         value: yearPublishedValue,
@@ -54,7 +54,7 @@ function AddBookModal(props) {
         inputBlurHandler: yearPublishedBlurHandler,
         inputResetHandler: yearPublishedResetHandler,
         errorMessage: yearPublishedErrorMessage
-    } = useInput('Year Published', 'year');
+    } = useInput('', 'year');
 
     const { 
         value: categoryValue,
@@ -64,7 +64,7 @@ function AddBookModal(props) {
         inputBlurHandler: categoryBlurHandler,
         inputResetHandler: categoryResetHandler,
         errorMessage: categoryErrorMessage
-    } = useInput('Category');
+    } = useInput('');
 
 
     // checks if all the fields are valid

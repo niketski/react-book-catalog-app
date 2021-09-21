@@ -6,7 +6,7 @@ function BooksTable(props) {
 
     if(!props.books.length) {
 
-        tableContent = <tr className={styles.booksTableMessage}><td colspan="7">Books not available ...</td></tr>
+        tableContent = <tr className={styles.booksTableMessage}><td colSpan="7">Books not available ...</td></tr>
 
     } else {
 
@@ -22,7 +22,7 @@ function BooksTable(props) {
                     <td>{year_published}</td>
                     <td>{category}</td>
                     <td className={styles.booksTableControl}>
-                        <button type="button" className="btnSecondary booksEdit">Edit</button>
+                        <button type="button" className="btnSecondary booksEdit" onClick={() => { props.editBookModalShowHandler(book) }}>Edit</button>
                         <button type="button" className="btnDanger booksDelete" onClick={() => { props.deleteBook(id) }}>Delete</button>
                     </td>
                 </tr>

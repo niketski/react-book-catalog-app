@@ -18,16 +18,16 @@ function reducer(state, action) {
         break;
 
         case 'reset':
-            return { value: '',isTouched: false }
+            return { value: '', isTouched: false }
         break;
 
     }
 
 }
 
-const useInput = function(fieldName, type) {
-    const [inputState, dispatch]      = useReducer(reducer, initialState);
-    const {isValid, errorMessage}     = inputValidate(inputState.value, fieldName, type);
+const useInput = function(initialValue = false, type) {
+    const [inputState, dispatch]      = useReducer(reducer, initialValue ? { value: initialValue, isTouched: false } : initialState);
+    const {isValid, errorMessage}     = inputValidate(inputState.value, type);
     const hasError                    = !isValid && inputState.isTouched;
 
     const inputChangehandler = function (event) {

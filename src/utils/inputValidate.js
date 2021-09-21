@@ -1,13 +1,15 @@
-function inputValidate(value, fieldName, type = 'default') {
+function inputValidate(value, type = 'default') {
 
     let messages = {
-        default: `${fieldName} is required`,
+        default: `Field is required`,
         email: 'Email is invalid.',
         isbn: 'Value must be equal to 5 digits',
         year: 'Year must be follow this format (YYYY)',
     };
 
-    if(value.trim().length == 0) {
+    const regExp = new RegExp(/^\s*$/);
+   
+    if(regExp.test(value)) {
 
         return {
             isValid: false,

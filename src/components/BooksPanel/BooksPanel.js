@@ -5,7 +5,7 @@ function BooksPanel(props) {
     return (
         <div className={styles.booksPanel}>
             <div className={styles.searchBookHolder}>
-                <SearchBook/>
+                <SearchBook searchValue={props.searchValue} onChangeHandler={props.onChangeHandler}/>
             </div>
             <button type="button" className="btnSecondary" onClick={props.addBookModalShowHandler}>Add Book</button>
         </div>

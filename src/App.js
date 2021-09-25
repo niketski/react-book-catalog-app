@@ -10,13 +10,15 @@ import AddBookModal from './components/addBookModal/AddBookModal';
 import EditBookModal from './components/editBookModal/EditBookModal';
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       addBookModalIsActive: false,
       editBookModalIsActive: false,
       currentBook: null,
-      books: []
+      searchValue: '',
+      books: [],
     };
     this.showAddBookModal  = this.showAddBookModal.bind(this);
     this.hideAddBookModal  = this.hideAddBookModal.bind(this);
@@ -25,6 +27,7 @@ class App extends React.Component {
     this.updateBook        = this.updateBook.bind(this);
     this.showEditBookModal = this.showEditBookModal.bind(this);
     this.hideEditBookModal = this.hideEditBookModal.bind(this);
+    this.searchInputChangeHandler = this.searchInputChangeHandler.bind(this);
   }
 
   showAddBookModal() {
@@ -92,6 +95,17 @@ class App extends React.Component {
     console.log('edit');
   }
 
+  searchInputChangeHandler(event) {
+    
+    this.setState(prevState => {
+      return {
+        searchValue: event.target.value
+      }
+    });
+
+  }
+
+
   // lifecycle methods
   componentDidMount() {
     console.log('mounted');
@@ -105,7 +119,28 @@ class App extends React.Component {
   }
 
   render() {
-    const { addBookModalIsActive, books, editBookModalIsActive, currentBook } = this.state;
+    let { 
+        addBookModalIsActive, 
+        books, 
+        editBookModalIsActive, 
+        currentBook, 
+        searchValue } = this.state;
+
+    // filter books
+    books = books.filter(book => {
+
+      if(searchValue == '') return book;
+
+      for(let data in book) {
+
+        if(book[data].toString().trim().toLowerCase().includes(searchValue.trim().toLowerCase())) {
+          return book;
+        }
+
+      }
+
+    });
+
 
     return (
       <React.Fragment>
@@ -117,10 +152,10 @@ class App extends React.Component {
 
         { editBookModalIsActive ? <EditBookModal onSubmit={this.updateBook} onClose={this.hideEditBookModal} book={currentBook}/> : null }
 
-      {/* end modals */}
+        {/* end modals */}
 
         <main>
-          <BooksPanel addBookModalShowHandler={this.showAddBookModal} />
+          <BooksPanel searchValue={searchValue} onChangeHandler={this.searchInputChangeHandler} addBookModalShowHandler={this.showAddBookModal} />
           <BooksTable editBookModalShowHandler={this.showEditBookModal} deleteBook={this.deleteBookHandler} books={books}/>
         </main>
       </React.Fragment>

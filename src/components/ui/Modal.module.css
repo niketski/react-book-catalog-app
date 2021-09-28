@@ -24,6 +24,8 @@
     padding-top: 65px;
     background: var(--background-color);
     border-top: 5px solid var(--primary-color);
+    animation: fadeIn .4s ease;
+    animation-fill-mode: both;
 }
 
     .modalClose {
@@ -63,3 +65,15 @@
         padding: 30px 15px;
     }
     
+/* key frames */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        top: 30%;
+    }
+
+    to {
+        opacity: 1;
+        top: 50%;
+    }
+}

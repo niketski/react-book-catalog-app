@@ -20,13 +20,13 @@ class App extends React.Component {
       searchValue: '',
       books: [],
     };
-    this.showAddBookModal  = this.showAddBookModal.bind(this);
-    this.hideAddBookModal  = this.hideAddBookModal.bind(this);
-    this.addBookHandler    = this.addBookHandler.bind(this);
-    this.deleteBookHandler = this.deleteBookHandler.bind(this);
-    this.updateBook        = this.updateBook.bind(this);
-    this.showEditBookModal = this.showEditBookModal.bind(this);
-    this.hideEditBookModal = this.hideEditBookModal.bind(this);
+    this.showAddBookModal         = this.showAddBookModal.bind(this);
+    this.hideAddBookModal         = this.hideAddBookModal.bind(this);
+    this.addBookHandler           = this.addBookHandler.bind(this);
+    this.deleteBookHandler        = this.deleteBookHandler.bind(this);
+    this.updateBook               = this.updateBook.bind(this);
+    this.showEditBookModal        = this.showEditBookModal.bind(this);
+    this.hideEditBookModal        = this.hideEditBookModal.bind(this);
     this.searchInputChangeHandler = this.searchInputChangeHandler.bind(this);
   }
 
@@ -60,7 +60,6 @@ class App extends React.Component {
     this.setState({
       books: updatedBooks
     });
-
 
     console.log('submtted');
 

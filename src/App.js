@@ -2,12 +2,15 @@ import React from 'react';
 import './App.css';
 import { books } from './initial-books-data.json';
 import { v4 as uuidV4 } from 'uuid';
+import BooksStorage from './utils/BooksStorage';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
 import BooksPanel from './components/booksPanel/BooksPanel';
 import AddBookModal from './components/addBookModal/AddBookModal';
 import EditBookModal from './components/editBookModal/EditBookModal';
+
+const storage = new BooksStorage();
 
 class App extends React.Component {
 
@@ -39,7 +42,6 @@ class App extends React.Component {
   }
 
   showEditBookModal(book) {
-    console.log(book);
     this.setState({ currentBook: book, editBookModalIsActive: true });
   }
 
@@ -61,7 +63,8 @@ class App extends React.Component {
       books: updatedBooks
     });
 
-    console.log('submtted');
+    // save book to the local storage
+    storage.set('books', JSON.stringify(updatedBooks));
 
   }
 
@@ -73,6 +76,8 @@ class App extends React.Component {
       books:  updatedBooks
     });
 
+    // save book to the local storage
+    storage.set('books', JSON.stringify(updatedBooks));
   
     console.log('delete');
   }
@@ -90,6 +95,9 @@ class App extends React.Component {
     this.setState({
       books: updatedBooks
     });
+
+     // save book to the local storage
+     storage.set('books', JSON.stringify(updatedBooks));
     
     console.log('edit');
   }
@@ -109,11 +117,26 @@ class App extends React.Component {
   componentDidMount() {
     console.log('mounted');
 
+    // load books from the local storage if exists
+    if(storage.get('books')) {
+
+      const savedBooks = storage.get('books');
+
+      this.setState({
+        books: JSON.parse(savedBooks)
+      });
+
+      return;
+
+    } 
+
+    // set initial books
     this.setState({
       books: books
     });
 
-    console.log(books);
+    // save initial books data to the local storage
+    storage.set('books', JSON.stringify(books));
 
   }
 

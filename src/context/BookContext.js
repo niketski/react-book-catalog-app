@@ -20,6 +20,7 @@ class BookContextProvider extends Component {
         this.deleteBookHandler        = this.deleteBookHandler.bind(this);
         this.updateBook               = this.updateBook.bind(this);
         this.searchInputChangeHandler = this.searchInputChangeHandler.bind(this);
+        this.setCurrentBookHandler    = this.setCurrentBookHandler.bind(this);
     }
 
     addBookHandler(book) {
@@ -85,6 +86,14 @@ class BookContextProvider extends Component {
     
     }
 
+    setCurrentBookHandler(book) {
+
+        this.setState({
+            currentBook: book
+        });
+
+    }
+
     // lifecycle methods
     componentDidMount() {
        
@@ -117,10 +126,10 @@ class BookContextProvider extends Component {
     }
 
     render() {
-        const {addBookHandler, deleteBookHandler, updateBook, searchInputChangeHandler} = this;
+        const {addBookHandler, deleteBookHandler, updateBook, searchInputChangeHandler, setCurrentBookHandler} = this;
 
         return (
-            <BookContext.Provider value={{...this.state, addBookHandler, deleteBookHandler, updateBook, searchInputChangeHandler}}>
+            <BookContext.Provider value={{...this.state, addBookHandler, deleteBookHandler, updateBook, searchInputChangeHandler, setCurrentBookHandler}}>
 
                 {this.props.children}
 

@@ -75,116 +75,116 @@ function AddBookModal(props) {
 
     return (
         <BookContext.Consumer>
-        {(context) => {
-            const {addBookHandler} = context;
-           
-            function formSubmitHandler(event) {
+            {(context) => {
+                const {addBookHandler} = context;
+            
+                function formSubmitHandler(event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                if(!formIsValid) return;
+                    if(!formIsValid) return;
 
-                addBookHandler({
-                    title: titleValue,
-                    isbn: isbnValue,
-                    author: authorValue,
-                    publisher: publisherValue,
-                    year_published: yearPublishedValue,
-                    category: categoryValue
-                });
-                
-                //reset fields
-                titleResetHandler();
-                isbnResetHandler();
-                authorResetHandler();
-                publisherResetHandler();
-                yearPublishedResetHandler();
-                categoryResetHandler();
-            }
+                    addBookHandler({
+                        title: titleValue,
+                        isbn: isbnValue,
+                        author: authorValue,
+                        publisher: publisherValue,
+                        year_published: yearPublishedValue,
+                        category: categoryValue
+                    });
+                    
+                    //reset fields
+                    titleResetHandler();
+                    isbnResetHandler();
+                    authorResetHandler();
+                    publisherResetHandler();
+                    yearPublishedResetHandler();
+                    categoryResetHandler();
+                }
 
-            return (
-                <Modal title="Add Book" onClose={props.onClose}>
-                    <div className={styles.addBookForm}>
-                        <form onSubmit={formSubmitHandler}>
+                return (
+                    <Modal title="Add Book">
+                        <div className={styles.addBookForm}>
+                            <form onSubmit={formSubmitHandler}>
 
-                            <div className={`inputField ${titleHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-title">ISBN</label>
-                                <input 
-                                    type="text" 
-                                    id="book-title" 
-                                    placeholder="Title" 
-                                    onChange={titleChangeHandler} 
-                                    onBlur={titleBlurHandler} 
-                                    value={titleValue}/>
-                                <div className="vaildationMessage">{titleErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${titleHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-title">ISBN</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-title" 
+                                        placeholder="Title" 
+                                        onChange={titleChangeHandler} 
+                                        onBlur={titleBlurHandler} 
+                                        value={titleValue}/>
+                                    <div className="vaildationMessage">{titleErrorMessage}</div>
+                                </div>
 
-                            <div className={`inputField ${isbnHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-isbn">ISBN</label>
-                                <input 
-                                    type="text" 
-                                    id="book-isbn" 
-                                    placeholder="ISBN"
-                                    onChange={isbnChangeHandler} 
-                                    onBlur={isbnBlurHandler} 
-                                    value={isbnValue}/>
-                                <div className="vaildationMessage">{isbnErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${isbnHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-isbn">ISBN</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-isbn" 
+                                        placeholder="ISBN"
+                                        onChange={isbnChangeHandler} 
+                                        onBlur={isbnBlurHandler} 
+                                        value={isbnValue}/>
+                                    <div className="vaildationMessage">{isbnErrorMessage}</div>
+                                </div>
 
-                            <div className={`inputField ${authorHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-author">Author</label>
-                                <input 
-                                    type="text" 
-                                    id="book-author" 
-                                    placeholder="Author" 
-                                    onChange={authorChangeHandler}
-                                    onBlur={authorBlurHandler}
-                                    value={authorValue}/>
-                                <div className="vaildationMessage">{authorErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${authorHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-author">Author</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-author" 
+                                        placeholder="Author" 
+                                        onChange={authorChangeHandler}
+                                        onBlur={authorBlurHandler}
+                                        value={authorValue}/>
+                                    <div className="vaildationMessage">{authorErrorMessage}</div>
+                                </div>
 
-                            <div className={`inputField ${publisherHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-publisher">Publisher</label>
-                                <input 
-                                    type="text" 
-                                    id="book-publisher" 
-                                    onChange={publisherChangeHandler}
-                                    onBlur={publisherBlurHandler}
-                                    placeholder="Publisher"
-                                    value={publisherValue}/>
-                                <div className="vaildationMessage">{publisherErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${publisherHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-publisher">Publisher</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-publisher" 
+                                        onChange={publisherChangeHandler}
+                                        onBlur={publisherBlurHandler}
+                                        placeholder="Publisher"
+                                        value={publisherValue}/>
+                                    <div className="vaildationMessage">{publisherErrorMessage}</div>
+                                </div>
 
-                            <div className={`inputField ${yearPublishedHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-year-published">Year Published</label>
-                                <input 
-                                    type="text" 
-                                    id="book-year-published" 
-                                    onChange={yearPublishedChangeHandler}
-                                    onBlur={yearPublishedBlurHandler}
-                                    placeholder="Year Published"
-                                    value={yearPublishedValue}/>
-                                <div className="vaildationMessage">{yearPublishedErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${yearPublishedHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-year-published">Year Published</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-year-published" 
+                                        onChange={yearPublishedChangeHandler}
+                                        onBlur={yearPublishedBlurHandler}
+                                        placeholder="Year Published"
+                                        value={yearPublishedValue}/>
+                                    <div className="vaildationMessage">{yearPublishedErrorMessage}</div>
+                                </div>
 
-                            <div className={`inputField ${categoryHasError ? 'invalid' : ''} ${styles.inputField}`}>
-                                <label htmlFor="book-category">Category</label>
-                                <input 
-                                    type="text" 
-                                    id="book-category" 
-                                    onChange={categoryChangeHandler}
-                                    onBlur={categoryBlurHandler}
-                                    placeholder="Category"
-                                    value={categoryValue}/>
-                                <div className="vaildationMessage">{categoryErrorMessage}</div>
-                            </div>
+                                <div className={`inputField ${categoryHasError ? 'invalid' : ''} ${styles.inputField}`}>
+                                    <label htmlFor="book-category">Category</label>
+                                    <input 
+                                        type="text" 
+                                        id="book-category" 
+                                        onChange={categoryChangeHandler}
+                                        onBlur={categoryBlurHandler}
+                                        placeholder="Category"
+                                        value={categoryValue}/>
+                                    <div className="vaildationMessage">{categoryErrorMessage}</div>
+                                </div>
 
-                            <button type="submit" className={`btnPrimary ${styles.btnPrimary}`} disabled={formIsValid ? false : true}>Submit</button>
-                        </form>
-                    </div>
-                </Modal>
-            );
-        }}
+                                <button type="submit" className={`btnPrimary ${styles.btnPrimary}`} disabled={formIsValid ? false : true}>Submit</button>
+                            </form>
+                        </div>
+                    </Modal>
+                );
+            }}
         </BookContext.Consumer>
     );
 }

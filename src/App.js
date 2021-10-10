@@ -4,6 +4,7 @@ import { books } from './initial-books-data.json';
 import { v4 as uuidV4 } from 'uuid';
 import BooksStorage from './utils/BooksStorage';
 import BookContextProvider from './context/BookContext';
+import ModalContextProvider from './context/ModalContext';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
@@ -40,7 +41,7 @@ class App extends React.Component {
   }
 
   showEditBookModal(book) {
-    this.setState({ currentBook: book, editBookModalIsActive: true });
+    this.setState({ currentBook: book });
   }
 
   hideEditBookModal() {
@@ -56,20 +57,20 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <BookContextProvider>
-          <Header/>
+          <ModalContextProvider>
+            <Header/>
 
-          {/* modals */}
+            {/* modals */}
 
-          { addBookModalIsActive ?  <AddBookModal onClose={this.hideAddBookModal} /> : null}
+            { editBookModalIsActive ? <EditBookModal onClose={this.hideEditBookModal} book={currentBook}/> : null }
 
-          { editBookModalIsActive ? <EditBookModal onSubmit={this.updateBook} onClose={this.hideEditBookModal} book={currentBook}/> : null }
+            {/* end modals */}
 
-          {/* end modals */}
-
-          <main>
-            <BooksPanel onChangeHandler={this.searchInputChangeHandler} addBookModalShowHandler={this.showAddBookModal} />
-            <BooksTable editBookModalShowHandler={this.showEditBookModal}/>
-          </main>
+            <main>
+              <BooksPanel onChangeHandler={this.searchInputChangeHandler} addBookModalShowHandler={this.showAddBookModal} />
+              <BooksTable/>
+            </main>
+          </ModalContextProvider>
         </BookContextProvider>
       </React.Fragment>
     );

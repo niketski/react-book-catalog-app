@@ -1,6 +1,7 @@
 import styles from './Modal.module.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ModalContext } from '../../context/ModalContext';
 
 const portalElement = document.getElementById('modal-wrapper');
 
@@ -22,10 +23,18 @@ function ModalContent(props) {
 
 function Modal(props) {
     return (
-        <React.Fragment>
-            {ReactDOM.createPortal(<ModalBackDrop onClose={props.onClose} />, portalElement)}
-            {ReactDOM.createPortal(<ModalContent title={props.title} onClose={props.onClose}>{props.children}</ModalContent>, portalElement)}
-        </React.Fragment>
+        <ModalContext.Consumer>{
+            (modalContext) => {
+                const { hideModal } = modalContext;
+
+                return (
+                    <React.Fragment>
+                        {ReactDOM.createPortal(<ModalBackDrop onClose={hideModal} />, portalElement)}
+                        {ReactDOM.createPortal(<ModalContent title={props.title} onClose={hideModal}>{props.children}</ModalContent>, portalElement)}
+                    </React.Fragment>
+                );
+            }
+        }</ModalContext.Consumer>
     );
 }
 

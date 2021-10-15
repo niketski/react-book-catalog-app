@@ -10,3 +10,18 @@
         width: 100%;
         max-width: 706px;
     }
+
+@media only screen and (max-width: 991px) {
+    .booksPanel {
+        display: block;
+    }
+
+    .searchBookHolder {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .booksPanel button {
+        width: 100%;
+    }
+}

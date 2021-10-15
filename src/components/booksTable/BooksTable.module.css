@@ -1,10 +1,12 @@
 .booksTable {
     display: block;
+    overflow: auto;
 }
 
     .booksTable table {
         width: 100%;
         border-collapse: collapse;
+        width: 1140px;
     }
 
         .booksTable thead {

@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from 'uuid';
 import BooksStorage from './utils/BooksStorage';
 import BookContextProvider from './context/BookContext';
 import ModalContextProvider from './context/ModalContext';
+import FirebaseDb from './utils/firebase';
 
 import Header from './components/header/Header';
 import BooksTable from './components/booksTable/BooksTable';
@@ -12,7 +13,7 @@ import BooksPanel from './components/booksPanel/BooksPanel';
 import AddBookModal from './components/addBookModal/AddBookModal';
 import EditBookModal from './components/editBookModal/EditBookModal';
 
-
+const firebaseDb = new FirebaseDb;
 const storage = new BooksStorage();
 
 class App extends React.Component {
@@ -46,6 +47,10 @@ class App extends React.Component {
 
   hideEditBookModal() {
     this.setState({ editBookModalIsActive: false });
+  }
+
+  componentDidMount() {
+    firebaseDb.get('books');
   }
 
   render() {

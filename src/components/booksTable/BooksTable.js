@@ -50,8 +50,6 @@ function BooksTable(props) {
                                 tableContent = books.map(book => {
                                     const {id, title, isbn, author, publisher, year_published, category} = book;
 
-                                    console.log(book);
-
                                     return (
                                         <tr data-book-id={id} key={id}>
                                             <td>{title}</td>

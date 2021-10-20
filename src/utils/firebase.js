@@ -17,19 +17,11 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 class FirebaseDb { 
 
-    get (collection) {
+    get (location, callback) {
         const db = getDatabase();
-        const dbRef = ref(db, collection);
+        const dbRef = ref(db, location);
         
-        onValue(dbRef, (snapshot) => {
-            console.log(snapshot.val());
-        });
-
-        // set(ref(db, `books/bookw`), {
-        //     title: 'asdn'
-        // }).then(() => {
-        //     console.log('added')
-        // });
+        onValue(dbRef, callback);
     }
     
 

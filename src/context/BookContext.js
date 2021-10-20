@@ -2,10 +2,12 @@ import React, { createContext, Component } from 'react';
 import { books } from '../initial-books-data.json';
 import { v4 as uuidV4 } from 'uuid';
 import BooksStorage from '../utils/BooksStorage';
+import FirebaseDb from '../utils/firebase';
 
-export const BookContext = createContext();
+
 
 const storage = new BooksStorage();
+const firebaseDb = new FirebaseDb;
 
 class BookContextProvider extends Component {
 
@@ -96,32 +98,47 @@ class BookContextProvider extends Component {
 
     // lifecycle methods
     componentDidMount() {
-       
-        // load books from the local storage if exists
-        const booksStorage = JSON.parse(storage.get('books'));
-        console.log(booksStorage.length);
-        
-        if(booksStorage.length) {
-            // console.log(storage.get('books').length);
-            const savedBooks = storage.get('books');
 
-            this.setState({
-                books: JSON.parse(savedBooks)
-            });
+        // get books from the firebase db
+        firebaseDb.get('books', (snapshot) => {
 
-            return;
+            if(snapshot.val() != null) {
 
-        } 
+                const data = snapshot.val();
+                const booksArray = []; 
+          
+                for (const key in data) {
+          
+                  const id = key;
+                  const {title, isbn, author, publisher, year_published, category} = data[key];
+          
+                  booksArray.push({
+                    id: id,  
+                    title: title,
+                    isbn: isbn,
+                    author: author, 
+                    publisher: publisher, 
+                    year_published: year_published,
+                    category: category
+                  });
+          
+                }
+          
+                this.setState({
+                    books: booksArray
+                });
 
-        console.log(storage.get('books'));
-        console.log('asdzxcqweqw');
-        // set initial books
-        this.setState({
-            books: books
+            } else {
+
+                this.setState({
+                    books: []
+                });
+
+            }
+
+            
+      
         });
-
-        // save initial books data to the local storage
-        storage.set('books', JSON.stringify(books));
 
     }
 
@@ -139,4 +156,5 @@ class BookContextProvider extends Component {
 
 }
 
+export const BookContext = createContext();
 export default BookContextProvider;

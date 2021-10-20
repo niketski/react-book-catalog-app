@@ -79,7 +79,7 @@ function EditBookModal(props) {
         <BookContext.Consumer>{
             (context) => {
 
-                const { updateBook } = context;
+                const { updateBook, } = context;
 
                 function formSubmitHandler(event) {
 

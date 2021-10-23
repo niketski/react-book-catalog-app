@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, onValue, update, remove, get, child } from "firebase/database";
+import { getDatabase, ref, set, onValue, update, remove, get, child, push } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -17,13 +17,33 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 class FirebaseDb { 
 
-    get (location, callback) {
+    get(location, callback) {
         const db = getDatabase();
         const dbRef = ref(db, location);
         
         onValue(dbRef, callback);
+        
     }
     
+    set(location, postData) {
+      const db = getDatabase();
+     
+      return set(ref(db, `${location}/${postData.id}`), postData);
+    }
+
+    update(location, id, newObject) {
+      const db        = getDatabase();
+      const reference = ref(db, `${location}/${id}`);
+
+      return update(reference, newObject);
+    }
+
+    delete(location, id) {
+      const db        = getDatabase();
+      const reference = ref(db, `${location}/${id}`);
+
+      return remove(reference);
+    }
 
 
 }

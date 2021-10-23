@@ -28,19 +28,20 @@ class BookContextProvider extends Component {
     addBookHandler(book) {
 
         let updatedBooks = [...this.state.books];
-        let newBook = {
+        const newBook = {
             ...book,
             id: uuidV4()
-        };
+        }
 
         updatedBooks.push(newBook);
 
-        this.setState({
-            books: updatedBooks
-        });
+        this.setState({ books: updatedBooks });
 
-        // save book to the local storage
-        storage.set('books', JSON.stringify(updatedBooks));
+        // add new book to the firebase
+        firebaseDb.set('books', newBook)
+            .then(() => {
+                console.log('added book');
+            });
 
     }
 
@@ -54,26 +55,36 @@ class BookContextProvider extends Component {
 
         // save book to the local storage
         storage.set('books', JSON.stringify(updatedBooks));
+
+        //delete book from the database
+        firebaseDb.delete('books', id)
+            .then(() => {
+                console.log('deleted');
+            });
         
-        console.log('delete');
     }
     
     updateBook(id, updatedBook) {
         const currentBooks = [...this.state.books];
         const updatedBooks = currentBooks.map(book => {
           
+          // returns the updated book
           if(id == book.id) return updatedBook;
-    
+            
           return book;
     
         });
-    
+        
+        // update state
         this.setState({
           books: updatedBooks
         });
     
-        // save book to the local storage
-        storage.set('books', JSON.stringify(updatedBooks));
+        // save book to the firebase database
+        firebaseDb.update('books', id, updatedBook)
+            .then(() => {
+                console.log('updated');
+            });
         
         console.log('edit');
     }
@@ -98,6 +109,8 @@ class BookContextProvider extends Component {
 
     // lifecycle methods
     componentDidMount() {
+
+        
 
         // get books from the firebase db
         firebaseDb.get('books', (snapshot) => {

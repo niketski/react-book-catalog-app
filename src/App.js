@@ -49,35 +49,6 @@ class App extends React.Component {
     this.setState({ editBookModalIsActive: false });
   }
 
-  componentDidMount() {
-
-    firebaseDb.get('books', (snapshot) => {
-      const data = snapshot.val();
-      const booksArray = []; 
-
-      for (const key in data) {
-
-        const id = key;
-        const {title, isbn, author, publisher, year_published, category} = data[key];
-
-        booksArray.push({
-          id: id,  
-          title: title,
-          isbn: isbn,
-          author: author, 
-          publisher: publisher, 
-          year_published: year_published,
-          category: category
-        });
-
-      }
-
-      console.log(booksArray);
-
-    });
-
-  }
-
   render() {
     let { 
         addBookModalIsActive, 

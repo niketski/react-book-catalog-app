@@ -2,6 +2,8 @@
 
 A simple Book Catalog App 
 
+[Demo](https://niketski.github.io/react-book-catalog-app/)
+
 ## Installation 
 
 1. Clone the repo 

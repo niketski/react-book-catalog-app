@@ -10,7 +10,7 @@ A simple Book Catalog App
 > git clone https://github.com/niketski/react-book-catalog-app.git
 
 2. Install NPM packages.
-> npm install.
+> npm install
 
 3. Run the app.
-> npm start.
+> npm start
